@@ -20,14 +20,17 @@ displays a modal with the content of the item.
       }
 {% endif %}
 
-{% assign lg-columns = include.lg-columns %}
-{% assign sm-columns = include.sm-columns %}
-{% assign xs-columns = include.xs-columns %}
+{% assign lg-columns = include.lg-columns | minus: 1 %}
+{% assign lg-col-size = 12 | divided_by: include.lg-columns %}
+{% assign sm-columns = include.sm-columns | minus: 1 %}
+{% assign sm-col-size = 12 | divided_by: include.sm-columns %}
+{% assign xs-columns = include.xs-columns | minus: 1 %}
+{% assign xs-col-size = 12 | divided_by: include.xs-columns %}
 {% assign items = include.items %}
 {% assign identifier = include.identifier %}
 <!-- DISPLAY COLLAGE ON LARGE SCREENS -->
 {% for i in (0..lg-columns) %}
-  <div class="col-md-3 hidden-sm hidden-xs column-grid-item">
+  <div class="col-md-{{lg-col-size}} hidden-sm hidden-xs column-grid-item">
     {% for item in items %}
       {% assign item-column = forloop.index | minus: 1 | modulo: 4 %}
       {% if item-column == i %}
@@ -49,7 +52,7 @@ displays a modal with the content of the item.
 
 <!-- DISPLAY COLLAGE ON SMALL SCREENS -->
 {% for i in (0..sm-columns) %}
-<div class="col-sm-4 hidden-md hidden-xs hidden-lg column-grid-item">
+<div class="col-sm-{{sm-col-size}} hidden-md hidden-xs hidden-lg column-grid-item">
   {% for item in items %}
     {% assign item-column = forloop.index | minus: 1 | modulo: 3 %}
     {% if item-column == i %}
@@ -69,7 +72,7 @@ displays a modal with the content of the item.
 
 <!-- DISPLAY COLLAGE ON EXTRASMALL SCREES -->
 {% for i in (0..xs-columns) %}
-<div class="col-xs-6 hidden-md hidden-sm hidden-lg column-grid-item">
+<div class="col-xs-{{xs-col-size}} hidden-md hidden-sm hidden-lg column-grid-item">
 {% for item in items %}
 {% assign item-column = forloop.index | minus: 1 | modulo: 2 %}
 {% if item-column == i %}
