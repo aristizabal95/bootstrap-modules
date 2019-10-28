@@ -34,7 +34,7 @@
   height: 20%;
   bottom: unset;
   width: 5%;
-  min-width: 5%;
+  min-width: 25px;
   background-image: none;
 }
 
