@@ -3,7 +3,8 @@
 }
 
 .carousel-inner>.item {
-  height: 40vw;
+  height: 100vh;
+  max-height: 60vh;
 }
 
 .carousel-inner>.item>img {
@@ -33,6 +34,7 @@
   height: 20%;
   bottom: unset;
   width: 5%;
+  min-width: 5%;
   background-image: none;
 }
 
@@ -47,7 +49,8 @@
   margin: 0 0 0;
   background-color: white;
   padding: 10px 0 0;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   position: static;
   text-align: left;
   white-space: nowrap;
@@ -60,6 +63,7 @@
   border-radius: 0;
   display: inline-block;
   height: 7vw;
+  min-height:80px;
   width: auto;
   margin: 0 !important;
 }

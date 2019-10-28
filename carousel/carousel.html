@@ -9,7 +9,7 @@
     <div class="item {% if forloop.index == 1 %}active{% endif %}">
       <img class="d-block h-100" src="{{item.path | prepend: site.baseurl }}" alt="{{item.desc}}">
       <div class="carousel-caption">
-        <p>{{ item.desc }}</p>
+        <p>{{ item.description | newline_to_br }}</p>
       </div>
     </div>
     {% endfor %}
@@ -24,7 +24,7 @@
     <span class="sr-only">Next</span>
   </a>
 
-  <ol class="carousel-indicators visible-sm-block hidden-xs-block visible-md-block visible-lg-block">
+  <ol class="carousel-indicators">
     {% for item in gallery %}
     {% assign id = item.path | split: "/" %}
     {% assign id = id[-1] | split: "." %}
